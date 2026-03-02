@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H.Slaiman | معرض الأعمال</title>
+    <title>هناء السليمان | معرض الأعمال</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
@@ -32,11 +32,11 @@
         .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
         .hero p { color: var(--text-gray); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
 
-        /* 2. قسم فيديوهات سناب (Snapchat Showcase) */
+        /* 2. قسم فيديوهات يوتيوب (بشكل سناب) */
         .section-title { text-align: center; margin: 50px 0 30px; font-size: 1.8rem; }
         .video-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             padding: 0 5%;
             max-width: 1200px;
@@ -45,13 +45,34 @@
         .snap-video {
             background: var(--card-gray);
             border-radius: 25px;
-            aspect-ratio: 9 / 16; /* أبعاد السناب */
+            aspect-ratio: 9 / 16;
             overflow: hidden;
             border: 1px solid #222;
             position: relative;
+            cursor: pointer;
         }
-        .snap-video video { width: 100%; height: 100%; object-fit: cover; }
-        .video-label { position: absolute; bottom: 15px; right: 15px; background: rgba(0,0,0,0.6); padding: 5px 12px; border-radius: 10px; font-size: 0.8rem; }
+        .snap-video iframe {
+            width: 100%; height: 100%; border: none;
+            display: none; /* يظهر فقط عند الضغط */
+        }
+        
+        /* غلاف الفيديو (Thumbnail) */
+        .video-thumbnail {
+            width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .play-btn {
+            font-size: 4rem;
+            color: var(--snap-yellow);
+            opacity: 0.9;
+            transition: 0.3s;
+        }
+        .snap-video:hover .play-btn { transform: scale(1.1); opacity: 1; }
+        .video-label { position: absolute; bottom: 15px; right: 15px; background: rgba(0,0,0,0.6); padding: 5px 12px; border-radius: 10px; font-size: 0.8rem; z-index: 3; }
 
         /* 3. قسم الخدمات الإعلانية (Bento Grid) */
         .services-grid {
@@ -70,10 +91,9 @@
             transition: 0.3s;
         }
         .service-card:hover { border-color: var(--snap-yellow); transform: translateY(-5px); }
-        .service-card i { font-size: 2rem; color: var(--snap-yellow); margin-bottom: 15px; }
+        .service-card i { font-size: 2rem; color: var(--snap-yellow); margin-bottom: 15px; display: block; }
         .service-card h3 { margin-bottom: 10px; }
         .service-card p { color: var(--text-gray); font-size: 0.9rem; }
-
         .big-card { grid-column: span 2; display: flex; align-items: center; gap: 20px; }
 
         /* 4. الفوتر (روابط التواصل) */
@@ -104,10 +124,8 @@
             border: 1px solid #333;
         }
         .social-circle:hover { background: var(--snap-yellow); color: black; transform: rotate(15deg); }
-        
         .copyright { color: var(--text-gray); font-size: 0.8rem; border-top: 1px solid #222; padding-top: 20px; }
 
-        /* موبايل */
         @media (max-width: 768px) {
             .services-grid { grid-template-columns: 1fr; }
             .big-card { grid-column: span 1; flex-direction: column; text-align: center; }
@@ -117,25 +135,28 @@
 <body>
 
     <section class="hero">
-        <img src="pic1.jpeg" alt="H.Slaiman" class="profile-img">
+        <img src="pic1.jpeg" alt="هناء السليمان" class="profile-img">
         <h1>هناء السليمان</h1>
-        <p>صانع محتوى وبلوجر مهتم بتغطية أجمل الفعاليات والرحلات. أنقل لكم الواقع بعدستي الخاصة وبأسلوب لا تجده إلا هنا.</p>
+        <p>صانعة محتوى وبلوجر مهتمة بتغطية أجمل الفعاليات والرحلات. أنقل لكم الواقع بعدستي الخاصة وبأسلوب لا تجده إلا هنا.</p>
     </section>
 
-    <h2 class="section-title">أحدث القصص (Stories)</h2>
+    <h2 class="section-title">أحدث التغطيات (YouTube)</h2>
     <div class="video-container">
-        <div class="snap-video">
-            <video src="your-video-1.mp4" poster="thumb1.jpg" muted loop onclick="this.play()"></video>
+        
+        <div class="snap-video" onclick="loadYT(this, 'ID_1')">
+            <div class="video-thumbnail" style="background-image: url('https://img.youtube.com/vi/0v4T3AvjGnE/maxresdefault.jpg');">
+                <i class="fas fa-play-circle play-btn"></i>
+            </div>
             <div class="video-label">تغطية موسم الرياض</div>
         </div>
-        <div class="snap-video">
-            <video src="your-video-2.mp4" poster="thumb2.jpg" muted loop onclick="this.play()"></video>
+
+        <div class="snap-video" onclick="loadYT(this, 'ID_2')">
+            <div class="video-thumbnail" style="background-image: url('https://img.youtube.com/vi/B-fv9CkE8hk/maxresdefault.jpg');">
+                <i class="fas fa-play-circle play-btn"></i>
+            </div>
             <div class="video-label">كواليس الإعلان</div>
         </div>
-        <div class="snap-video">
-            <video src="your-video-3.mp4" poster="thumb3.jpg" muted loop onclick="this.play()"></video>
-            <div class="video-label">يوميات سياحية</div>
-        </div>
+
     </div>
 
     <h2 class="section-title">الخدمات الإعلانية</h2>
@@ -170,15 +191,21 @@
         <h3 style="margin-bottom: 20px;">دعنا نتحدث عن مشروعك القادم</h3>
         <div class="footer-links">
             <a href="https://www.snapchat.com/add/h.slaiman" class="social-circle"><i class="fab fa-snapchat"></i></a>
-            <a href="#" class="social-circle"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@h.slaiman" class="social-circle"><i class="fab fa-youtube"></i></a>
             <a href="https://wa.me/966500000000" class="social-circle"><i class="fab fa-whatsapp"></i></a>
             <a href="mailto:info@hslaiman.com" class="social-circle"><i class="fas fa-envelope"></i></a>
         </div>
         <div class="copyright">
-            <p>حقوق النشر © 2026 H.Slaiman. جميع الحقوق محفوظة.</p>
+            <p>حقوق النشر © 2026 Hana Slaiman. جميع الحقوق محفوظة.</p>
         </div>
     </footer>
 
+    <script>
+        function loadYT(container, videoId) {
+            const thumb = container.querySelector('.video-thumbnail');
+            thumb.style.display = 'none';
+            container.innerHTML += `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&modestbranding=1&rel=0" allow="autoplay; encrypted-media" allowfullscreen style="display:block; width:100%; height:100%;"></iframe>`;
+        }
+    </script>
 </body>
-
 </html>
