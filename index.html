@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H.Slaiman | معرض الأعمال</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --snap-yellow: #FFFC00;
+            --bg-black: #050505;
+            --card-gray: #121212;
+            --text-gray: #a0a0a0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+        body { background-color: var(--bg-black); color: white; line-height: 1.6; }
+
+        /* 1. قسم التعريف (Hero) */
+        .hero {
+            padding: 80px 5% 40px;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a00 0%, #050505 100%);
+        }
+        .profile-img {
+            width: 140px; height: 140px;
+            border-radius: 40px;
+            border: 3px solid var(--snap-yellow);
+            margin-bottom: 20px;
+            object-fit: cover;
+        }
+        .hero h1 { font-size: 2.5rem; margin-bottom: 10px; }
+        .hero p { color: var(--text-gray); max-width: 600px; margin: 0 auto; font-size: 1.1rem; }
+
+        /* 2. قسم فيديوهات سناب (Snapchat Showcase) */
+        .section-title { text-align: center; margin: 50px 0 30px; font-size: 1.8rem; }
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 0 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .snap-video {
+            background: var(--card-gray);
+            border-radius: 25px;
+            aspect-ratio: 9 / 16; /* أبعاد السناب */
+            overflow: hidden;
+            border: 1px solid #222;
+            position: relative;
+        }
+        .snap-video video { width: 100%; height: 100%; object-fit: cover; }
+        .video-label { position: absolute; bottom: 15px; right: 15px; background: rgba(0,0,0,0.6); padding: 5px 12px; border-radius: 10px; font-size: 0.8rem; }
+
+        /* 3. قسم الخدمات الإعلانية (Bento Grid) */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            padding: 40px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .service-card {
+            background: var(--card-gray);
+            padding: 30px;
+            border-radius: 24px;
+            border: 1px solid #1f1f1f;
+            transition: 0.3s;
+        }
+        .service-card:hover { border-color: var(--snap-yellow); transform: translateY(-5px); }
+        .service-card i { font-size: 2rem; color: var(--snap-yellow); margin-bottom: 15px; }
+        .service-card h3 { margin-bottom: 10px; }
+        .service-card p { color: var(--text-gray); font-size: 0.9rem; }
+
+        .big-card { grid-column: span 2; display: flex; align-items: center; gap: 20px; }
+
+        /* 4. الفوتر (روابط التواصل) */
+        footer {
+            background: var(--card-gray);
+            margin-top: 80px;
+            padding: 60px 5% 30px;
+            text-align: center;
+            border-top: 1px solid #222;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        .social-circle {
+            width: 60px; height: 60px;
+            background: #1a1a1a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+            border: 1px solid #333;
+        }
+        .social-circle:hover { background: var(--snap-yellow); color: black; transform: rotate(15deg); }
+        
+        .copyright { color: var(--text-gray); font-size: 0.8rem; border-top: 1px solid #222; padding-top: 20px; }
+
+        /* موبايل */
+        @media (max-width: 768px) {
+            .services-grid { grid-template-columns: 1fr; }
+            .big-card { grid-column: span 1; flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <img src="https://i.ibb.co/vz6C8XJ/snap-profile.jpg" alt="H.Slaiman" class="profile-img">
+        <h1>هناء السليمان</h1>
+        <p>صانع محتوى وبلوجر مهتم بتغطية أجمل الفعاليات والرحلات. أنقل لكم الواقع بعدستي الخاصة وبأسلوب لا تجده إلا هنا.</p>
+    </section>
+
+    <h2 class="section-title">أحدث القصص (Stories)</h2>
+    <div class="video-container">
+        <div class="snap-video">
+            <video src="your-video-1.mp4" poster="thumb1.jpg" muted loop onclick="this.play()"></video>
+            <div class="video-label">تغطية موسم الرياض</div>
+        </div>
+        <div class="snap-video">
+            <video src="your-video-2.mp4" poster="thumb2.jpg" muted loop onclick="this.play()"></video>
+            <div class="video-label">كواليس الإعلان</div>
+        </div>
+        <div class="snap-video">
+            <video src="your-video-3.mp4" poster="thumb3.jpg" muted loop onclick="this.play()"></video>
+            <div class="video-label">يوميات سياحية</div>
+        </div>
+    </div>
+
+    <h2 class="section-title">الخدمات الإعلانية</h2>
+    <div class="services-grid">
+        <div class="service-card big-card">
+            <i class="fas fa-bullhorn"></i>
+            <div>
+                <h3>تغطية الفعاليات والمهرجانات</h3>
+                <p>تغطية شاملة وحصرية للفعاليات بأسلوب تفاعلي يزيد من حماس الجمهور ويحقق وصولاً واسعاً.</p>
+            </div>
+        </div>
+        <div class="service-card">
+            <i class="fas fa-box-open"></i>
+            <h3>مراجعة المنتجات</h3>
+            <p>تقديم مراجعات صادقة وبطريقة عصرية تناسب جمهور السناب شات.</p>
+        </div>
+        <div class="service-card">
+            <i class="fas fa-camera"></i>
+            <h3>إنتاج محتوى إبداعي</h3>
+            <p>تصوير وإخراج مقاطع قصيرة بجودة عالية تناسب هويتك التجارية.</p>
+        </div>
+        <div class="service-card big-card">
+            <i class="fas fa-handshake"></i>
+            <div>
+                <h3>شراكات طويلة الأمد</h3>
+                <p>نقدم خطط تسويقية كـ "سفير للعلامة التجارية" لضمان استمرارية الظهور والتأثير.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <h3 style="margin-bottom: 20px;">دعنا نتحدث عن مشروعك القادم</h3>
+        <div class="footer-links">
+            <a href="https://www.snapchat.com/add/h.slaiman" class="social-circle"><i class="fab fa-snapchat"></i></a>
+            <a href="#" class="social-circle"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/966500000000" class="social-circle"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:info@hslaiman.com" class="social-circle"><i class="fas fa-envelope"></i></a>
+        </div>
+        <div class="copyright">
+            <p>حقوق النشر © 2026 H.Slaiman. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
